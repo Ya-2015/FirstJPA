@@ -1,0 +1,21 @@
+package model;
+
+import javax.persistence.EntityManager;
+
+public class grabCustomer {
+	public static void main(String[] args) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		try {
+			model.DemoCustomer cust = em.find(model.DemoCustomer.class, (long)2);
+			System.out.println(cust.getCustFirstName());
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+			System.out.println("cerrado!");
+		}
+
+	}
+
+
+}
